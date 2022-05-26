@@ -29,7 +29,7 @@ const controlPanel = `
 <tbody>
   <tr>
     <td>
-      <select class="why" id="choose" name="typee"  style="width:120%">
+      <select id="choose2" name="typee"  style="width:120%">
         <option value="0" selected="selected">body</option>
         <option value="1">Skull</option>
       </select>
@@ -264,7 +264,7 @@ for (let i = 0; i < buttons.length; i++) {
 }
 function Validate()
   {
-  var combo = document.getElementById("choose");
+  var combo = document.getElementById("choose2");
   console .log(combo);
   if (combo.selectedIndex===0)
   {

@@ -23,7 +23,7 @@ const controlPanel = `
   <tbody>
     <tr>
       <td>
-        <select class="representations" style="width:300%">
+        <select class="representations" id="choose1" style="width:300%">
           <option value="0" >body</option>
           <option value="1"selected="selected">skull</option>
         </select>
@@ -94,7 +94,7 @@ global.marchingCube = marchingCube;
  
 function Validate()
   {
-  var combo = document.getElementById("choose");
+  var combo = document.getElementById("choose1");
   console .log(combo);
   if (combo.selectedIndex===0)
   {

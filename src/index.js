@@ -26,62 +26,64 @@ import '@kitware/vtk.js/IO/Core/DataAccessHelper/HttpDataAccessHelper';
 
 // function volumrmapper(){
 const controlPanel = `
-
 <table>
-<tbody>
-  <tr>
-    <td>
-      <select class="why" id="choose" name="typee"  style="width:120%">
-        <option value="0" selected="selected">body</option>
-        <option value="1">Skull</option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td>pickable</td>
-    <td>
-      <input class="flag" data-name="pickable" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>visibility</td>
-    <td>
-      <input class="flag" data-name="visibility" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>contextVisibility</td>
-    <td>
-      <input class="flag" data-name="contextVisibility" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>handleVisibility</td>
-    <td>
-      <input class="flag" data-name="handleVisibility" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>faceHandlesEnabled</td>
-    <td>
-      <input class="flag" data-name="faceHandlesEnabled" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>edgeHandlesEnabled</td>
-    <td>
-      <input class="flag" data-name="edgeHandlesEnabled" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>cornerHandlesEnabled</td>
-    <td>
-      <input class="flag" data-name="cornerHandlesEnabled" type="checkbox" checked="checked">
-    </td>
-  </tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>
+        <select class="why" id="choose" name="typee" style="width:120%">
+          <option value="0" selected="selected">body</option>
+          <option value="1">Skull</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>pickable</td>
+      <td>
+        <input class="flag" data-name="pickable" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>visibility</td>
+      <td>
+        <input class="flag" data-name="visibility" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>contextVisibility</td>
+      <td>
+        <input class="flag" data-name="contextVisibility" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>handleVisibility</td>
+      <td>
+        <input class="flag" data-name="handleVisibility" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>faceHandlesEnabled</td>
+      <td>
+        <input class="flag" data-name="faceHandlesEnabled" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>edgeHandlesEnabled</td>
+      <td>
+        <input class="flag" data-name="edgeHandlesEnabled" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>cornerHandlesEnabled</td>
+      <td>
+        <input class="flag" data-name="cornerHandlesEnabled" type="checkbox" checked="checked">
+      </td>
+    </tr>
+  </tbody>
 </table>
-<input id="validateBtn"type="button" onclick="Validate()" value="Verify"> `;                                                                                    
+<input id="validateBtn" type="button" onclick="Validate()" value="Verify">
+<div style="position: absolute; top: calc(10px + 1em); left: 5px; background: rgba(255, 255, 255, 0.3);">
+  <canvas width="450" height="150" style="cursor: default;"></canvas>
+</div> `;                                                                                    
 // const ddl = document.getElementById('.type');
   
 
@@ -140,7 +142,6 @@ overlay.style.borderRadius = '50%';
 overlay.style.left = '-100px';
 overlay.style.pointerEvents = 'none';
 document.querySelector('body').appendChild(overlay);
-
 // ----------------------------------------------------------------------------
 // Widget manager
 // ----------------------------------------------------------------------------
@@ -268,6 +269,7 @@ reader.setUrl(`https://kitware.github.io/vtk-js/data/volume/LIDC2.vti`).then(() 
     // add volume to renderer
     renderer.addVolume(actor);
     renderer.resetCamera();
+
     renderer.resetCameraClippingRange();
     renderWindow.render();
   });
@@ -301,22 +303,23 @@ for (let i = 0; i < buttons.length; i++) {
 // export default volumrmapper;
 function Validate()
   {
-  var combo = document.getElementById("choose");
-  console .log(combo);
-  if (combo.selectedIndex===0)
-  {
-    console.log(combo.selectedIndex);
-    volumemapper();    
-    console.log( 'volumemapper');
-  }
-  if(combo.selectedIndex ==1)
-  {
-    console.log(combo.selectedIndex);
-    console.log('skull');
-    skull();
+    var combo = document.getElementById("choose");
+    console .log(combo);
+    if (combo.selectedIndex==0)
+    {
+      console.log(combo.selectedIndex);
+      volumemapper();    
+      console.log( 'volumemapper');
+    }
+    if(combo.selectedIndex ==1)
+    {
+      console.log(combo.selectedIndex);
+      console.log('skull');
+      skull();
 
-  }
+    }
  }
+ const validateBtn = document.getElementById("validateBtn");
+ validateBtn.addEventListener('click', Validate);
 
-const validateBtn = document.getElementById("validateBtn");
-validateBtn.addEventListener('click', Validate);
+
