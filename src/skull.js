@@ -14,12 +14,21 @@ import vtkHttpDataSetReader from '@kitware/vtk.js/IO/Core/HttpDataSetReader';
 import vtkImageMarchingCubes from '@kitware/vtk.js/Filters/General/ImageMarchingCubes';
 import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper';
 
+import volumemapper from './volume';
 // import controlPanel from './controller.html';
 //import controlPanel from './controller.html';
-function my_function(){
+function skull(){
 const controlPanel = `
 <table>
   <tbody>
+    <tr>
+      <td>
+        <select class="representations" style="width:300%">
+          <option value="0" >body</option>
+          <option value="1"selected="selected">skull</option>
+        </select>
+      </td>
+    </tr>
     <tr>
       <td>Iso value</td>
       <td>
@@ -27,7 +36,8 @@ const controlPanel = `
       </td>
     </tr>
   </tbody>
-</table>  `;
+</table>
+<input id="validateBtn1" type="button" value="Verify">`;
 
 const fullScreenRenderWindow = vtkFullScreenRenderWindow.newInstance({
   background: [0, 0, 0],
@@ -81,6 +91,27 @@ global.fullScreen = fullScreenRenderWindow;
 global.actor = actor;
 global.mapper = mapper;
 global.marchingCube = marchingCube;
-} 
+ 
+function Validate()
+  {
+  var combo = document.getElementById("choose");
+  console .log(combo);
+  if (combo.selectedIndex===0)
+  {
+    console.log(combo.selectedIndex);
+    volumemapper();    
+    console.log( 'volumemapper');
+  }
+  if(combo.selectedIndex ==1)
+  {
+    console.log(combo.selectedIndex);
+    console.log('skull');
+    skull();
 
-export default my_function;
+  }
+ }
+
+const validateBtn = document.getElementById("validateBtn1");
+validateBtn.addEventListener('click', Validate);
+}
+export default skull;

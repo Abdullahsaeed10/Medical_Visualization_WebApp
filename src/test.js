@@ -1,7 +1,19 @@
+var ddl = document.querySelector("select");
+// var ddl = document.getElementById("typee");
+console.log(ddl);
+
+var selectedValue = ddl.options[ddl.selectedIndex].value;
+console.log(selectedValue);
+    if (selectedValue == "skull")
+   {
+    alert("Please select a card type");
+   }
+
+/////////////////////////////////////////////
 import { vec3, quat, mat4 } from 'gl-matrix';
 
 import '@kitware/vtk.js/favicon';
-
+// import 'document';
 // Load the rendering pieces we want to use (for both WebGL and WebGPU)
 import '@kitware/vtk.js/Rendering/Profiles/Geometry';
 import '@kitware/vtk.js/Rendering/Profiles/Volume';
@@ -16,76 +28,80 @@ import vtkPiecewiseFunction from '@kitware/vtk.js/Common/DataModel/PiecewiseFunc
 import vtkVolume from '@kitware/vtk.js/Rendering/Core/Volume';
 import vtkVolumeMapper from '@kitware/vtk.js/Rendering/Core/VolumeMapper';
 import vtkPlane from '@kitware/vtk.js/Common/DataModel/Plane';
-import skull from './skull';
-import volumemapper from './volume';
-
+import my_function from './skull';
 
 // Force the loading of HttpDataAccessHelper to support gzip decompression
 import '@kitware/vtk.js/IO/Core/DataAccessHelper/HttpDataAccessHelper';
 
-
-// function volumrmapper(){
+// my_function();
+console.log('selectedValue');
+console.log(2);
 const controlPanel = `
-
 <table>
-<tbody>
-  <tr>
-    <td>
-      <select class="why" id="choose" name="typee"  style="width:120%">
-        <option value="0" selected="selected">body</option>
-        <option value="1">Skull</option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td>pickable</td>
-    <td>
-      <input class="flag" data-name="pickable" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>visibility</td>
-    <td>
-      <input class="flag" data-name="visibility" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>contextVisibility</td>
-    <td>
-      <input class="flag" data-name="contextVisibility" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>handleVisibility</td>
-    <td>
-      <input class="flag" data-name="handleVisibility" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>faceHandlesEnabled</td>
-    <td>
-      <input class="flag" data-name="faceHandlesEnabled" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>edgeHandlesEnabled</td>
-    <td>
-      <input class="flag" data-name="edgeHandlesEnabled" type="checkbox" checked="checked">
-    </td>
-  </tr>
-  <tr>
-    <td>cornerHandlesEnabled</td>
-    <td>
-      <input class="flag" data-name="cornerHandlesEnabled" type="checkbox" checked="checked">
-    </td>
-  </tr>
-</tbody>
-</table>
-<input id="validateBtn"type="button" onclick="Validate()" value="Verify"> `;                                                                                    
-// const ddl = document.getElementById('.type');
-  
+  <tbody>
+    <tr>
+      <td>
+        <select class="why" id="type" name="typee"  style="width:120%">
+          <option value="body" selected="selected">body</option>
+          <option value="Skull">Skull</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>pickable</td>
+      <td>
+        <input class="flag" data-name="pickable" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>visibility</td>
+      <td>
+        <input class="flag" data-name="visibility" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>contextVisibility</td>
+      <td>
+        <input class="flag" data-name="contextVisibility" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>handleVisibility</td>
+      <td>
+        <input class="flag" data-name="handleVisibility" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>faceHandlesEnabled</td>
+      <td>
+        <input class="flag" data-name="faceHandlesEnabled" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>edgeHandlesEnabled</td>
+      <td>
+        <input class="flag" data-name="edgeHandlesEnabled" type="checkbox" checked="checked">
+      </td>
+    </tr>
+    <tr>
+      <td>cornerHandlesEnabled</td>
+      <td>
+        <input class="flag" data-name="cornerHandlesEnabled" type="checkbox" checked="checked">
+      </td>
+    </tr>
+  </tbody>
+</table> `;
 
+var ddl = document.querySelector("select");
+// var ddl = document.getElementById("typee");
+console.log(ddl);
 
+var selectedValue = ddl.options[ddl.selectedIndex].value;
+console.log(selectedValue);
+    if (selectedValue == "skull")
+   {
+    alert("Please select a card type");
+   }
 // var ddl = document.getElementById("type");
 // console.log(ddl);
 // var selectedValue = ddl.options[ddl.selectedIndex].value;
@@ -110,8 +126,7 @@ const controlPanel = `
 //     var selectedText = card.options[card.selectedIndex].text;
 //     alert(selectedText);
 // }
-
-// ----------------------------------------------------------------------------
+// --------------SS--------------------------------------------------------------
 // Standard rendering code setup
 // ----------------------------------------------------------------------------
 
@@ -297,26 +312,5 @@ const buttons = document.querySelectorAll('button');
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', widgetRegistration);
 }
-// }
-// export default volumrmapper;
-function Validate()
-  {
-  var combo = document.getElementById("choose");
-  console .log(combo);
-  if (combo.selectedIndex===0)
-  {
-    console.log(combo.selectedIndex);
-    volumemapper();    
-    console.log( 'volumemapper');
-  }
-  if(combo.selectedIndex ==1)
-  {
-    console.log(combo.selectedIndex);
-    console.log('skull');
-    skull();
 
-  }
- }
 
-const validateBtn = document.getElementById("validateBtn");
-validateBtn.addEventListener('click', Validate);

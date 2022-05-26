@@ -17,14 +17,12 @@ import vtkVolume from '@kitware/vtk.js/Rendering/Core/Volume';
 import vtkVolumeMapper from '@kitware/vtk.js/Rendering/Core/VolumeMapper';
 import vtkPlane from '@kitware/vtk.js/Common/DataModel/Plane';
 import skull from './skull';
-import volumemapper from './volume';
-
 
 // Force the loading of HttpDataAccessHelper to support gzip decompression
 import '@kitware/vtk.js/IO/Core/DataAccessHelper/HttpDataAccessHelper';
 
 
-// function volumrmapper(){
+function volumemapper(){
 const controlPanel = `
 
 <table>
@@ -73,43 +71,10 @@ const controlPanel = `
       <input class="flag" data-name="edgeHandlesEnabled" type="checkbox" checked="checked">
     </td>
   </tr>
-  <tr>
-    <td>cornerHandlesEnabled</td>
-    <td>
-      <input class="flag" data-name="cornerHandlesEnabled" type="checkbox" checked="checked">
-    </td>
-  </tr>
+
 </tbody>
 </table>
-<input id="validateBtn"type="button" onclick="Validate()" value="Verify"> `;                                                                                    
-// const ddl = document.getElementById('.type');
-  
-
-
-// var ddl = document.getElementById("type");
-// console.log(ddl);
-// var selectedValue = ddl.options[ddl.selectedIndex].value;
-  
-// if (card.selectedIndex  == 1) {
-//     my_function();
-//     console.log('selectedValue');
-//     Console.WriteLine('selectedValue');
-//     console.log(selectedValue);
-
-// }
-// var card = document.getElementById("type");
-// if(card.value == 0) {
-//      alert('select one answer');
-// }
-//   // else if (selectedValue == "body") {
-// var card = document.getElementById("skull");
-// if(card.selectedIndex == 0) {
-//      alert('select one answer');
-// }
-// else {
-//     var selectedText = card.options[card.selectedIndex].text;
-//     alert(selectedText);
-// }
+<input id="validateBtn2"type="button"  value="Verify"> `;                                                                                    
 
 // ----------------------------------------------------------------------------
 // Standard rendering code setup
@@ -297,8 +262,6 @@ const buttons = document.querySelectorAll('button');
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', widgetRegistration);
 }
-// }
-// export default volumrmapper;
 function Validate()
   {
   var combo = document.getElementById("choose");
@@ -318,5 +281,7 @@ function Validate()
   }
  }
 
-const validateBtn = document.getElementById("validateBtn");
+const validateBtn = document.getElementById("validateBtn2");
 validateBtn.addEventListener('click', Validate);
+}
+export default volumemapper;
