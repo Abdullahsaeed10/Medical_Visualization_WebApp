@@ -39,8 +39,9 @@
 4. Sometimes when running the code there are no errors shown but the website doesn't work so we had to open inspect to see what is happening to the console.
 5. we tried to load the head and chest data one single time to make the website faster, but we couldn't.
 6. It was hard to us to understand the PiecewiseGaussianWidget as it was not implemented as html so it took time from us to uderstand how it works.
-
 &nbsp;
+
+## Our website:
 #### 1. Controlling isovalue:
 <img src="pic/iso1.jpeg" alt="drawing" length ="600" width="600"/><img src="pic/iso2.jpeg" alt="drawing" length ="600" width="600"/>
 
@@ -51,6 +52,7 @@
 &nbsp;
 #### 3. Ray Casting with transfer function:
 <img src="pic/ray1.jpeg" alt="drawing" length ="600" width="600"/><img src="pic/ray2.jpeg" alt="drawing" length ="600" width="600"/>
+
 We made the transfer function as a checkbox with the other options to let the user choose whether he wants it or no.
 
 &nbsp;
