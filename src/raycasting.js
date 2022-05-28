@@ -140,7 +140,7 @@ widgetContainer.style.padding = '10px';
 widgetContainer.style.display = 'flex';
 
 ///// To control the place of the transfer function widget 
-widgetContainer.style.marginLeft ='1000px';
+widgetContainer.style.marginLeft ='1050px';
 
 body.appendChild(widgetContainer);
 // Create Label for preset
@@ -154,7 +154,9 @@ labelContainer.style.textAlign = 'center';
 labelContainer.style.userSelect = 'none';
 labelContainer.style.cursor = 'pointer';
 labelContainer.style.marginTop='200px';
-labelContainer.style.marginLeft='457px';
+///// To control the place of the words under the transfer function widget
+
+labelContainer.style.marginLeft='520px';
 
 
 // labelContainer.style.display = 'none';
