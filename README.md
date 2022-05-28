@@ -1,7 +1,6 @@
 # vtk-project
-### Team Members
 
-| Name              |
+| Team Members              |
 | ----------------- |
 | Abdullah Saeed    |
 | Nada Mohamed      |
